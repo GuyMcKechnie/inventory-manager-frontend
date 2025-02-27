@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Button({ type, content, icon }) {
   return (
     <button
@@ -9,5 +11,11 @@ function Button({ type, content, icon }) {
     </button>
   );
 }
+
+Button.propTypes = {
+  type: PropTypes.string,
+  content: PropTypes.string,
+  icon: PropTypes.node,
+};
 
 export default Button;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { BiPlus } from "react-icons/bi";
 import api from "../Axios/api";
 import Button from "./Button";
@@ -151,5 +152,10 @@ function Modal({ isOpen, onClose }) {
     </div>
   );
 }
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default Modal;
