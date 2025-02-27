@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "../Axios/api";
+import Button from "./Button.jsx";
 import Modal from "./UserModal.jsx";
+import { BiPlus } from "react-icons/bi";
 
 function UserTable() {
   // Loading users from db
@@ -63,14 +65,13 @@ function UserTable() {
               </form>
             </div>
             <div className="flex w-full flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-y-0 md:space-x-3">
-              <div className="m-5 flex justify-center" id="test">
-                <button
-                  className="bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 block rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white focus:ring-4 focus:outline-none"
-                  type="button"
+              <div className="m-5 flex justify-center">
+                <Button
+                  type={"button"}
+                  content={"Add User"}
+                  icon={<BiPlus />}
                   onClick={handleModalOpen}
-                >
-                  Add User
-                </button>
+                ></Button>
               </div>
 
               <div className="flex w-full items-center space-x-3 md:w-auto">
@@ -100,7 +101,7 @@ function UserTable() {
                   >
                     <li>
                       <a
-                        href="#section"
+                        href="#"
                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
                         Mass Edit
@@ -109,7 +110,7 @@ function UserTable() {
                   </ul>
                   <div className="py-1">
                     <a
-                      href="#section"
+                      href="#"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Delete all
@@ -144,22 +145,81 @@ function UserTable() {
                   id="filterDropdown"
                   className="z-10 hidden w-48 rounded-lg bg-white p-3 shadow dark:bg-gray-700"
                 >
+                  <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
+                    Choose brand
+                  </h6>
                   <ul
                     className="space-y-2 text-sm"
                     aria-labelledby="filterDropdownButton"
                   >
                     <li className="flex items-center">
                       <input
-                        id="marketing"
+                        id="apple"
                         type="checkbox"
                         value=""
                         className="text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 h-4 w-4 rounded border-gray-300 bg-gray-100 focus:ring-2 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700"
                       />
                       <label
-                        htmlFor="marketing"
+                        htmlFor="apple"
                         className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                       >
-                        Allows Marketing
+                        Apple (56)
+                      </label>
+                    </li>
+                    <li className="flex items-center">
+                      <input
+                        id="fitbit"
+                        type="checkbox"
+                        value=""
+                        className="text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 h-4 w-4 rounded border-gray-300 bg-gray-100 focus:ring-2 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700"
+                      />
+                      <label
+                        htmlFor="fitbit"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      >
+                        Microsoft (16)
+                      </label>
+                    </li>
+                    <li className="flex items-center">
+                      <input
+                        id="razor"
+                        type="checkbox"
+                        value=""
+                        className="text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 h-4 w-4 rounded border-gray-300 bg-gray-100 focus:ring-2 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700"
+                      />
+                      <label
+                        htmlFor="razor"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      >
+                        Razor (49)
+                      </label>
+                    </li>
+                    <li className="flex items-center">
+                      <input
+                        id="nikon"
+                        type="checkbox"
+                        value=""
+                        className="text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 h-4 w-4 rounded border-gray-300 bg-gray-100 focus:ring-2 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700"
+                      />
+                      <label
+                        htmlFor="nikon"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      >
+                        Nikon (12)
+                      </label>
+                    </li>
+                    <li className="flex items-center">
+                      <input
+                        id="benq"
+                        type="checkbox"
+                        value=""
+                        className="text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 h-4 w-4 rounded border-gray-300 bg-gray-100 focus:ring-2 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700"
+                      />
+                      <label
+                        htmlFor="benq"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      >
+                        BenQ (74)
                       </label>
                     </li>
                   </ul>
