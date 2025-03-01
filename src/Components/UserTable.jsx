@@ -3,6 +3,7 @@ import api from "../Axios/api";
 import Button from "./Button.jsx";
 import Modal from "./UserModal.jsx";
 import { BiPlus } from "react-icons/bi";
+import Paginate from "./Pagination/Paginate.jsx";
 
 function UserTable() {
   // Loading users from db
@@ -15,6 +16,7 @@ function UserTable() {
           method: "GET",
         });
         setUsers(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -257,9 +259,9 @@ function UserTable() {
               <tbody>
                 {users.map((user) => (
                   <tr key={user.userid}>
-                    <td className="px-4 py-3">{user.userId}</td>
-                    <td className="px-4 py-3">{user.firstName}</td>
-                    <td className="px-4 py-3">{user.lastName}</td>
+                    <td className="px-4 py-3">{user.userid}</td>
+                    <td className="px-4 py-3">{user.firstname}</td>
+                    <td className="px-4 py-3">{user.lastname}</td>
                     <td className="px-4 py-3">{user.email}</td>
                     <td className="px-4 py-3">{user.cellphone}</td>
                     <td className="px-4 py-3">{user.marketing}</td>
@@ -279,84 +281,10 @@ function UserTable() {
               </span>
               of{" "}
               <span className="font-semibold text-gray-900 dark:text-white">
-                1000
+                {users.length}
               </span>
             </span>
-            <ul className="inline-flex items-stretch -space-x-px">
-              <li>
-                <a
-                  href="#section"
-                  className="ml-0 flex h-full items-center justify-center rounded-l-lg border border-gray-300 bg-white px-3 py-1.5 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  <span className="sr-only">Previous</span>
-                  <svg
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" />
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#section"
-                  className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  1
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#section"
-                  className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  2
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#section"
-                  aria-current="page"
-                  className="text-primary-600 bg-primary-50 border-primary-300 hover:bg-primary-100 hover:text-primary-700 z-10 flex items-center justify-center border px-3 py-2 text-sm leading-tight dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                >
-                  3
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#section"
-                  className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  ...
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#section"
-                  className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  100
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#section"
-                  className="flex h-full items-center justify-center rounded-r-lg border border-gray-300 bg-white px-3 py-1.5 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  <span className="sr-only">Next</span>
-                  <svg
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
-                  </svg>
-                </a>
-              </li>
-            </ul>
+            <Paginate userCount={Math.ceil(users.length/10)} />
           </nav>
           <div>
             <Modal isOpen={modalOpen} onClose={handleModalClose} />
